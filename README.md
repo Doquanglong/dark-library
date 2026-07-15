@@ -88,35 +88,6 @@ than hotlinking Amazon — their image URLs rotate and they vary responses by
 referrer, so hotlinked covers tend to break silently later. If a cover is
 missing or fails to load, the site shows a title card instead.
 
-## Deploying to AWS Amplify
-
-1. Push this folder to a GitHub repository.
-2. In the Amplify console: **Create new app → Deploy from GitHub**, and pick the repo.
-3. Amplify reads `amplify.yml` in this folder, so the build settings are already
-   correct — it runs `npm ci && npm run build` and publishes `dist/`.
-4. **Add the SPA rewrite rule.** Under **Hosting → Rewrites and redirects**, add:
-
-   | Source | Target | Type |
-   | --- | --- | --- |
-   | `/<*>` | `/index.html` | `200 (Rewrite)` |
-
-   Without this, the shelf works but loading `/book/horus-rising` directly (or
-   refreshing on it) returns 404 — the router lives in the browser, so every path
-   has to be served `index.html`. Amplify often adds this automatically; check
-   that it is there.
-
-Every `git push` to the connected branch rebuilds and redeploys.
-
-### On cost
-
-Amplify's free tier lasts **12 months**, not forever. After that, build minutes
-and hosting are pay-as-you-go — pennies for a site this size, but not zero.
-
-Because the build output is plain static files, nothing here is tied to Amplify.
-If you ever want off it, the same `dist/` folder drops onto GitHub Pages,
-Netlify, or Cloudflare Pages unchanged. Only the rewrite rule above needs
-re-creating in the new host's own settings.
-
 ## Layout
 
 ```
