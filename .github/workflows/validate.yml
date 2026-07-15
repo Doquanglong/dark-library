@@ -1,0 +1,28 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Checks every book file: required fields, valid status/rating, and
+      # well-formed, non-duplicated chapter headings.
+      - name: Validate book files
+        run: npm run validate
+
+      # Proves the site still compiles with the new content.
+      - name: Build
+        run: npm run build
