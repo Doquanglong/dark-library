@@ -1,4 +1,5 @@
 # Dark-Library
+https://dark-library.longdodev.workers.dev/
 <img width="1620" height="946" alt="dark library" src="https://github.com/user-attachments/assets/ba8217fa-bb8e-41f4-beb2-13ec8e6cae99" />
 
 A personal, public reading tracker. Every book gets a page with its details, a
