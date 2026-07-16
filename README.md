@@ -89,7 +89,6 @@ than hotlinking Amazon — their image URLs rotate and they vary responses by
 referrer, so hotlinked covers tend to break silently later. If a cover is
 missing or fails to load, the site shows a title card instead.
 
-
 ## Layout
 
 ```
@@ -100,3 +99,20 @@ src/
   styles.css        all styling; the palette lives in :root at the top
 public/covers/      cover images
 ```
+
+## Deploying
+
+Hosted on Cloudflare Workers. Every push to `main` rebuilds and redeploys —
+build command `npm run build`, output directory `dist`.
+
+Routing is handled by `wrangler.jsonc`: `not_found_handling:
+"single-page-application"` serves `index.html` for any path that is not a real
+file, which is what a client-side router needs. Without it the shelf works but
+loading `/book/xenos` directly, or refreshing on it, 404s.
+
+**Do not add a `public/_redirects` file.** That is the Cloudflare *Pages*
+convention. On Workers it collides with `not_found_handling` and the deploy
+fails with "Infinite loop detected in this rule".
+
+The build output is plain static files, so nothing is tied to Cloudflare — but
+any other host needs its own SPA-fallback rule.

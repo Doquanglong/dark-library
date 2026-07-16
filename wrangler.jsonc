@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dark-library",
+  "compatibility_date": "2026-07-16",
+  "assets": {
+    "directory": "./dist",
+    // Serves index.html for any path that is not a real file, which is what a
+    // client-side router needs. This replaces the _redirects file Cloudflare
+    // Pages would use — the two together are read as a redirect loop.
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
