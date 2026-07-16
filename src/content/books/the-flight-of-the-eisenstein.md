@@ -3,7 +3,7 @@ title: The Flight of the Eisenstein
 author: James Swallow
 year: 2007
 series: The Horus Heresy #4
-cover: /covers/the-flight-of-the-eisenstein.jpg
+cover: /covers/the-flight-of-eisenstein.jpg
 status: unread
 tags: warhammer, 40k, horus heresy
 ---

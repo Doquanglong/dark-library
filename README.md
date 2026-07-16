@@ -88,34 +88,30 @@ than hotlinking Amazon — their image URLs rotate and they vary responses by
 referrer, so hotlinked covers tend to break silently later. If a cover is
 missing or fails to load, the site shows a title card instead.
 
-## Deploying to AWS Amplify
+## Deploying to Cloudflare Pages
 
-1. Push this folder to a GitHub repository.
-2. In the Amplify console: **Create new app → Deploy from GitHub**, and pick the repo.
-3. Amplify reads `amplify.yml` in this folder, so the build settings are already
-   correct — it runs `npm ci && npm run build` and publishes `dist/`.
-4. **Add the SPA rewrite rule.** Under **Hosting → Rewrites and redirects**, add:
+1. Push this repository to GitHub.
+2. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to
+   Git**, and pick the repo.
+3. Set the build settings:
 
-   | Source | Target | Type |
-   | --- | --- | --- |
-   | `/<*>` | `/index.html` | `200 (Rewrite)` |
+   | Setting | Value |
+   | --- | --- |
+   | Framework preset | Vite |
+   | Build command | `npm run build` |
+   | Build output directory | `dist` |
 
-   Without this, the shelf works but loading `/book/horus-rising` directly (or
-   refreshing on it) returns 404 — the router lives in the browser, so every path
-   has to be served `index.html`. Amplify often adds this automatically; check
-   that it is there.
+4. Deploy. Every `git push` to `main` rebuilds and redeploys; pull requests get
+   their own preview URL automatically.
 
-Every `git push` to the connected branch rebuilds and redeploys.
+Routing is already handled. `public/_redirects` sends every path to
+`index.html` with a 200, which is what a client-side router needs — without it
+the shelf would work but loading `/book/xenos` directly, or refreshing on it,
+would 404.
 
-### On cost
-
-Amplify's free tier lasts **12 months**, not forever. After that, build minutes
-and hosting are pay-as-you-go — pennies for a site this size, but not zero.
-
-Because the build output is plain static files, nothing here is tied to Amplify.
-If you ever want off it, the same `dist/` folder drops onto GitHub Pages,
-Netlify, or Cloudflare Pages unchanged. Only the rewrite rule above needs
-re-creating in the new host's own settings.
+Nothing here is tied to Cloudflare. The build output is plain static files, so
+the same `dist/` folder drops onto Netlify (which reads the same `_redirects`
+format), GitHub Pages, or anywhere else that serves a directory.
 
 ## Layout
 

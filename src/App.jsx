@@ -20,7 +20,7 @@ export default function App() {
             <span aria-hidden="true" style={{ color: 'var(--gold)' }}>
               ⬥
             </span>
-            The reading log
+            Dark Library
           </Link>
           <nav className="masthead__nav">
             <NavLink to="/" end>
