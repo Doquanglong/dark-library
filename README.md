@@ -1,4 +1,5 @@
-# The reading log
+# Dark-Library
+<img width="1620" height="946" alt="dark library" src="https://github.com/user-attachments/assets/ba8217fa-bb8e-41f4-beb2-13ec8e6cae99" />
 
 A personal, public reading tracker. Every book gets a page with its details, a
 synopsis, a summary of each chapter in my own words, and a note on how I feel
