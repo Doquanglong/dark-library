@@ -88,30 +88,6 @@ than hotlinking Amazon — their image URLs rotate and they vary responses by
 referrer, so hotlinked covers tend to break silently later. If a cover is
 missing or fails to load, the site shows a title card instead.
 
-## Deploying to Cloudflare Pages
-
-1. Push this repository to GitHub.
-2. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to
-   Git**, and pick the repo.
-3. Set the build settings:
-
-   | Setting | Value |
-   | --- | --- |
-   | Framework preset | Vite |
-   | Build command | `npm run build` |
-   | Build output directory | `dist` |
-
-4. Deploy. Every `git push` to `main` rebuilds and redeploys; pull requests get
-   their own preview URL automatically.
-
-Routing is already handled. `public/_redirects` sends every path to
-`index.html` with a 200, which is what a client-side router needs — without it
-the shelf would work but loading `/book/xenos` directly, or refreshing on it,
-would 404.
-
-Nothing here is tied to Cloudflare. The build output is plain static files, so
-the same `dist/` folder drops onto Netlify (which reads the same `_redirects`
-format), GitHub Pages, or anywhere else that serves a directory.
 
 ## Layout
 
