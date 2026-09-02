@@ -7,7 +7,6 @@ pages: 414
 series: The Horus Heresy #1
 cover: /covers/horus-rising.jpg
 status: reading
-totalChapters: 21
 rating: 4
 tags: warhammer, sci-fi
 source: https://www.blacklibrary.com/
