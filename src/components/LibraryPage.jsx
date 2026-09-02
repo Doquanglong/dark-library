@@ -14,7 +14,7 @@ function statusLabel(book) {
   if (book.status === 'finished') return 'Finished'
   if (book.status === 'unread') return 'To read'
   if (book.totalChapters) return `Ch. ${book.summarized} of ${book.totalChapters}`
-  if (book.summarized) return `${book.summarized} noted`
+  if (book.summarized) return `(${book.summarized}-1) chapter`
   return book.status === 'paused' ? 'Paused' : 'Started'
 }
 
