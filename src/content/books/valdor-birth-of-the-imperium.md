@@ -2,10 +2,9 @@
 title: "Valdor: Birth of the Imperium"
 author: Chris Wraight
 year: 2020
-pages: 208
 series: The Horus Heresy — Characters
 cover: /covers/valdor-birth-of-the-imperium.jpg
-status: reading
+status: unread
 tags: warhammer, 40k, horus heresy
 source: https://www.blacklibrary.com/
 ---
